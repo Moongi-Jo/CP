@@ -9,7 +9,7 @@ public class Main {
 
         for(int i=0; i<n;i++){
             m[i]= i; 
-            System.out.println(i);
+           
         }
        
     }
