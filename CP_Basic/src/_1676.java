@@ -11,9 +11,6 @@ public class _1676 {
 			n = n/5;
 		}
 		System.out.println(x);
-			
-		
-		
-		
+
 	}
 }
