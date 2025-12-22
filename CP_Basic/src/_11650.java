@@ -1,4 +1,8 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Comparator;
 
 class Point {
 	int x;
@@ -10,47 +14,34 @@ class Point {
 	}
 }
 
-class Point_sort {
+class Point_sort implements Comparator<Point> {
 
-	public static void bubble_sort(Point[] a) {
-		bubble_sort(a, a.length);
-	}
-
-	private static void bubble_sort(Point[] a, int size) {
-
-		for (int i = 1; i < size; i++) {
-
-			for (int j = 0; j < size - i; j++) {
-
-				if ((a[j].x > a[j + 1].x) || (a[j].x == a[j + 1].x && a[j].y > a[j + 1].y)) {
-					swap(a, j, j + 1);
-				}
-			}
+	@Override
+	public int compare(Point p1, Point p2) {
+		if (p1.x != p2.x) {
+			return p1.x - p2.x;
 		}
+		return p1.y - p2.y;
 	}
 
-	private static void swap(Point[] a, int i, int j) {
-		Point temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
-	}
 }
 
 public class _11650 {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 
-		int n = sc.nextInt();
+		int n = Integer.parseInt(br.readLine());
+
 		Point point[] = new Point[n];
 
 		for (int i = 0; i < n; i++) {
-			int x = sc.nextInt();
-			int y = sc.nextInt();
-			point[i] = new Point(x, y);
+			String[] input = br.readLine().split(" ");
+			point[i] = new Point(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
 		}
 
-		Point_sort.bubble_sort(point);
+		Arrays.sort(point, new Point_sort());
 
 		for (int i = 0; i < n; i++) {
 			System.out.println(point[i].x + " " + point[i].y);
