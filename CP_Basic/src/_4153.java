@@ -1,3 +1,5 @@
+package src;
+
 import java.util.*;
 class Constants{
 	public static int THREE = 3;
